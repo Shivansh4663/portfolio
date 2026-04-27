@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function App() {
+
+  const [open, setOpen] = useState(null);
+
+  const toggle = (index) => {
+    setOpen(open === index ? null : index);
+  };
+
   return (
     <div className="bg-slate-900 text-white">
 
@@ -35,20 +43,40 @@ export default function App() {
       <section id="projects" className="p-10 bg-slate-800">
         <h2 className="text-3xl mb-6">Projects</h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-slate-700 p-5 rounded">
-            <h3 className="text-xl">DualCodeX</h3>
-            <p>Real-time collaborative coding platform</p>
-            <div className="flex gap-3 mt-3">
-              <a href="#">Live</a>
-              <a href="#">GitHub</a>
-            </div>
-          </div>
+        {/* DualCodeX */}
+        <div 
+          className="bg-slate-700 p-5 rounded mb-4 cursor-pointer hover:scale-105 transition"
+          onClick={() => toggle(1)}
+        >
+          <h3 className="text-xl font-semibold">🔹 DualCodeX</h3>
 
-          <div className="bg-slate-700 p-5 rounded">
-            <h3 className="text-xl">Stock Dashboard</h3>
-            <p>ML-based stock prediction app</p>
-          </div>
+          {open === 1 && (
+            <p className="mt-3 text-gray-300">
+              DualCodeX is a real-time collaborative coding platform where multiple users can write 
+              and edit code together simultaneously. It features live synchronization, enabling 
+              seamless teamwork, coding interviews, and peer learning. The platform improves developer 
+              productivity by allowing real-time interaction and instant updates.
+            </p>
+          )}
+        </div>
+
+        {/* Stock Project */}
+        <div 
+          className="bg-slate-700 p-5 rounded cursor-pointer hover:scale-105 transition"
+          onClick={() => toggle(2)}
+        >
+          <h3 className="text-xl font-semibold">
+            🔹 Stock Price Prediction Dashboard
+          </h3>
+
+          {open === 2 && (
+            <p className="mt-3 text-gray-300">
+              This project is a machine learning-based dashboard designed to predict stock prices 
+              using historical data. Built with React, it visualizes trends and future predictions 
+              through interactive charts. It helps users understand market behavior and supports 
+              better decision-making using data-driven insights.
+            </p>
+          )}
         </div>
       </section>
 
@@ -56,7 +84,7 @@ export default function App() {
       <section className="p-10">
         <h2 className="text-3xl mb-4">Skills</h2>
         <div className="flex flex-wrap gap-3">
-          {["HTML","CSS","JS","React","AWS","SQL"].map(skill => (
+          {["HTML","CSS","JavaScript","React","AWS","SQL"].map(skill => (
             <span key={skill} className="bg-slate-700 px-3 py-1 rounded">
               {skill}
             </span>
@@ -70,12 +98,12 @@ export default function App() {
 
         <div className="bg-slate-700 p-5 rounded mb-4">
           <h3>Cloud Computing Basics</h3>
-          <p>Understanding AWS fundamentals</p>
+          <p>Understanding AWS fundamentals and cloud architecture.</p>
         </div>
 
         <div className="bg-slate-700 p-5 rounded">
           <h3>Frontend vs Backend</h3>
-          <p>Complete beginner guide</p>
+          <p>Complete beginner guide to web development roles.</p>
         </div>
       </section>
 
@@ -96,12 +124,12 @@ export default function App() {
       {/* FOOTER */}
       <footer className="text-center p-5 bg-black">
         <div className="flex justify-center gap-4 mb-2">
-          <FaGithub/>
-          <FaLinkedin/>
+          <FaGithub />
+          <FaLinkedin />
         </div>
         © 2026 Shivansh
       </footer>
 
     </div>
   );
-} 
+}
