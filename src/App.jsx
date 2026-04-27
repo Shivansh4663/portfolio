@@ -11,7 +11,7 @@ export default function App() {
           initial={{opacity:0, y:-50}} 
           animate={{opacity:1, y:0}}
           className="text-5xl font-bold">
-          Hi, I'm <span className="text-sky-400">Shivansh</span>
+          Hi, I'm <span className="text-sky-400">Shivansh Chaudhary</span>
         </motion.h1>
 
         <p className="mt-4 text-lg">Cloud & Web Developer</p>
